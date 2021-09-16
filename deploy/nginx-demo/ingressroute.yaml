@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: podinfo
+  name: nginx-demo
 spec:
   entryPoints:
     - web
@@ -9,5 +9,5 @@ spec:
     - kind: Rule
       match: PathPrefix(`/`)
       services:
-        - name: podinfo
-          port: 9898
+        - name: nginx-demo
+          port: 80

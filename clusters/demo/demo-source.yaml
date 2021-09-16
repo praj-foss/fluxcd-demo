@@ -2,11 +2,10 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
-  name: podinfo
+  name: nginx-demo
   namespace: flux-system
 spec:
   interval: 30s
   ref:
-    branch: master
-  url: https://github.com/stefanprodan/podinfo
-
+    branch: main
+  url: https://github.com/praj-foss/fluxcd-demo
