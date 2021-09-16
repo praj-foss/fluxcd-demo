@@ -11,5 +11,21 @@ spec:
   sourceRef:
     kind: GitRepository
     name: podinfo
-  validation: client
-
+  validation: client  
+  patchesStrategicMerge:
+    - apiVersion: traefik.containo.us/v1alpha1
+      kind: IngressRoute
+      metadata:
+        name: podinfo
+      spec:
+        entryPoints:
+          - web
+        routes:
+          - kind: Rule
+            match: PathPrefix(`/`)
+            services:
+              - name: podinfo
+                port: 9898
+        tls:
+          certResolver: default
+          options: {}
