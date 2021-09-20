@@ -1,0 +1,23 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: my-traefik
+  namespace: traefik
+spec:
+  chart:
+    spec:
+      chart: traefik
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+      version: 9.18.2
+  install: {}
+  interval: 1m0s  
+  values:
+    additionalArguments:
+      - --serversTransport.insecureSkipVerify=true
+    service:
+      annotations:
+        service.beta.kubernetes.io/oci-load-balancer-shape: 10Mbps-Micro    # Always free
+
