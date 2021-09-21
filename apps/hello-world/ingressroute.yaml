@@ -1,14 +1,14 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: nginx-demo
+  name: hello-world
 spec:
   entryPoints:
     - web
   routes:
     - kind: Rule
-      match: PathPrefix(`/nginx`)
-      priority: 20
+      match: PathPrefix(`/`)
+      priority: 10
       services:
-        - name: nginx-demo
-          port: 80
+        - name: hello-world
+          port: 8080
